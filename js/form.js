@@ -7,15 +7,16 @@ botaoAdicionar.addEventListener("click", function(event){
     var paciente = obtemPacienteDoFormulario(form);
     console.log(paciente);
 
-    var pacienteTr = montaTr(paciente);
+    
 
     if(!validaPaciente(paciente)){
         console.log("Paciente Inválido");
         return;
     }
 
-    var tabela = document.querySelector("#tabela-pacientes");
-    tabela.appendChild(pacienteTr);
+    adicionaPacienteNaTabela(paciente);
+    
+    
     form.reset();
 });
 
@@ -65,4 +66,10 @@ function validaPaciente(paciente){
         alert("O peso é inválido");
         return false;
     }
+}
+
+function adicionaPacienteNaTabela(paciente){
+    var pacienteTr = montaTr(paciente);
+    var tabela = document.querySelector("#tabela-pacientes");
+    tabela.appendChild(pacienteTr);
 }
